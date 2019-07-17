@@ -4,14 +4,14 @@ import M from 'materialize-css';
 
 function Menu () {
     return(
-        <div>
-                <nav>
-        <div className="nav-wrapper white">
-        <ul className="right hide-on-med-and-down" style={{ display: 'flex', alignItems: 'center' }}>
-            <li><NavLink exact to="/">Accueil</NavLink></li>
-            <li><NavLink exact to="/reservation">Réservation</NavLink></li>
-            <li><NavLink exact to="/goldenbook">Goldenbook</NavLink></li>
-            <li><NavLink exact to="/artistpage">Artist</NavLink></li>
+        <div className="bg">
+                <nav className='navbar'>
+        <div className="navbar navbar-dark bg-primary">
+        <ul className="navbar-nav" >
+            <li className="nav-item active"><NavLink exact to="/">Accueil</NavLink></li>
+            <li className="nav-item active"><NavLink exact to="/reservation">Réservation</NavLink></li>
+            <li className="nav-item active"><NavLink exact to="/goldenbook">Goldenbook</NavLink></li>
+            <li className="nav-item active"><NavLink exact to="/artistpage">Artist</NavLink></li>
         </ul>
         </div>
         </nav>

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios'
 import { NavLink } from 'react-router-dom';
-import M from 'materialize-css';
+
 import moment from 'moment';
 
 function Reservation () {
     const [shows, setShows]= useState([]);
     const[showId, setShowId]= useState();
-    const[price,setPrice]=useState();
+    const[priceP,setPriceP]=useState(0);
     const[firstName,setFirstName]=useState('');
     const[lastName, setLastName]=useState('');
     const[quantityChildren, setQuantityChildren]=useState(0);
@@ -22,7 +22,7 @@ function Reservation () {
     
 
     useEffect(() => {
-        M.AutoInit();
+      
             Axios.get('http://localhost:8000/spectacle')
             .then((result)=>{
                 setShows(result.data)
@@ -70,10 +70,15 @@ function Reservation () {
           console.log("Une erreur s'est produite. Merci de réessayer");
         });
       }
-     
-      console.log({quantityAdult})
+      useEffect( ()=>{
+     setPriceP(({quantityAdult}*8)+({quantityChildren}*5))
+    },[])
+
+
+
     return(
-        <div className="container">
+      <div className="container">
+      <h3>Reservation Page</h3>
               <div className=" input-field col s4 noFuckingmargin">
           <select id="show" className="browser-default color_select" value={showId} onChange={changeEvent => setShowId(changeEvent.target.value)}>
           {shows.map(
@@ -90,7 +95,7 @@ function Reservation () {
             )}
           </select>
         </div>
-            
+            <h2>Family</h2>
            <div className="row">
                         <div className="input-field col s6">
                         <i className="material-icons prefix">face</i>
@@ -119,6 +124,7 @@ function Reservation () {
                         <label className="" for="first_name2">First Name</label>
                         </div>
             </div>
+            
             <div className="row">
                         <div className="input-field col s6">
                             <select 
@@ -154,10 +160,11 @@ function Reservation () {
                             </select>
                           
                         </div>
-                        <button onClick={sendRegistration}>Save Reservation</button>
-
+                        <button type="button" class="btn btn-primary"onClick={sendRegistration}>Save Reservation</button>
+                         <p>{priceP}</p>
                  
             </div>
+            <h2>Compagny and school</h2>
             <div className="row">
                         <div className="input-field col s6">
                             <i className="material-icons prefix">face</i>
@@ -222,7 +229,7 @@ function Reservation () {
                             </select>
                           
                         </div>
-                        <button onClick={sendRegistrationCompagny}>Save Reservation</button>
+                        <button type="button" class="btn btn-primary" onClick={sendRegistrationCompagny}>Save Reservation</button>
                 
             </div>
 

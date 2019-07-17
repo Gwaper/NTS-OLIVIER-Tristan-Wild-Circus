@@ -1,4 +1,7 @@
-.img_size{
+.test{
     width: 85px !important;
-    height: auto !important;
+    height: 85px !important;
+}
+.background_Card{
+    background-image: url('https://media.giphy.com/media/i3QWlJ0EqaeqnueIjj/giphy.gif')
 }

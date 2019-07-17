@@ -7,6 +7,7 @@ import ArtistPage from './Components/ArtistPage/ArtistPage';
 import GoldenBook from './Components/GoldenBook/GoldenBook';
 import Menu from'./Components/Menu/Menu';
 import Footer from './Components/Footer/Footer';
+import './geoBoostrap.css'
 
 
 

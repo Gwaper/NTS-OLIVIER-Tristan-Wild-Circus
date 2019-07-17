@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios'
 import { NavLink } from 'react-router-dom';
-import M from 'materialize-css';
+
 import moment from 'moment'
 
 function GoldenBook () {
@@ -19,7 +19,7 @@ function GoldenBook () {
        dateComment,
    }
    useEffect(() => {
-    M.AutoInit();
+ 
         Axios.get('http://localhost:8000/goldenbook')
         .then((result)=>{
             setGoldenMessage(result.data)
@@ -40,16 +40,17 @@ function GoldenBook () {
         console.log("try again");
       });
     }
+  
    console.log({goldenMessage})
     return(
         <div className='container'>
              <div className="row">
                     <form className="col s6">
-                        <div className="input-field col s6">
+                        <div className="form-group">
                         <input 
                         id="name" 
                         type="text" 
-                        className="validate"
+                        className="form_control"
                         onChange={(e)=>setPseudo(e.target.value)}
                         value={pseudo}
                         />
@@ -68,7 +69,7 @@ function GoldenBook () {
 
                 </div>
              <div className="row">
-                    <form className="col s12">
+                    <form className="form-group">
                         <div className="input-field col s12">
                         <input 
                         id="comment" 
