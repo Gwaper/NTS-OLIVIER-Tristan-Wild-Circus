@@ -15,7 +15,7 @@ function HomePage() {
                     <div className="col s12 m12">
                         <div className="card">
                             <div className="card-image waves-effect waves-block waves-light">
-                                <img className="activator" src="https://i.ytimg.com/vi/HJ-6JsOdGoI/hqdefault.jpg"></img>
+                                <img className="activator" src="https://media.giphy.com/media/mF71O0Xwg7hhm/giphy.gif"></img>
                             </div>
                             <div className="card-content">
                                 <span className="card-title activator grey-text text-darken-4">Our Story<i className="material-icons right">more_vert</i></span>
@@ -39,7 +39,7 @@ function HomePage() {
                         <div className="col s12 m12">
                             <div className="card">
                                 <div className="card-image">
-                                    <img src="https://www.revanchamag.com/wp-content/uploads/2016/11/Balada-triste-de-trompeta-2.jpg"></img>
+                                    <img src="https://media.giphy.com/media/1APbYDjqtMe1iiIvyk/giphy.gif"></img>
                                     <span className="card-title">Our artist</span>
                                 </div>
                                 <div className="card-content">

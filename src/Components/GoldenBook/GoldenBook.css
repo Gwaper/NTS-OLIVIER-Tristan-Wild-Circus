@@ -1,0 +1,26 @@
+.t1
+{
+    text-align: center;
+  color:rgb(51,153,255);
+}
+.date_comment
+{
+    font-size: 25px;
+  color:rgb(204,0,51);
+}
+.name_comment
+{
+ color:rgb(102,204,51); 
+}
+.golden_comment
+{
+  color:rgb(255,153,0);
+}
+.comment{
+    border:solid;
+    border-radius:12px;
+    text-align:center;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    border-color:rgb(51,153,255);
+}

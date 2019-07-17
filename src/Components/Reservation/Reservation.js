@@ -3,11 +3,13 @@ import Axios from 'axios'
 import { NavLink } from 'react-router-dom';
 import M from 'materialize-css';
 import moment from 'moment';
+import './Reservation.css'
 
 function Reservation () {
     const [shows, setShows]= useState([]);
     const[showId, setShowId]= useState();
-    const[price,setPrice]=useState();
+    const[priceP,setPriceP]=useState(0);
+    const [priceC, setPriceC]=useState(0)
     const[firstName,setFirstName]=useState('');
     const[lastName, setLastName]=useState('');
     const[quantityChildren, setQuantityChildren]=useState(0);
@@ -29,6 +31,18 @@ function Reservation () {
             }
             )
       },[]);
+useEffect(()=>{
+  if(quantityAdult>0||quantityChildren>0){
+    setPriceP((quantityAdult*8)+(quantityChildren*5))
+  }
+
+},[quantityAdult,quantityChildren])
+useEffect(()=>{
+  if(numberAdult>0||numberChildren>0){
+    setPriceP((numberAdult*5)+(numberChildren*3))
+  }
+
+},[numberAdult,numberChildren])
 
       const addReservation = {
         firstName,
@@ -71,11 +85,13 @@ function Reservation () {
         });
       }
      
-      console.log({quantityAdult})
+  
     return(
         <div className="container">
+          <h2 className='gt1'>Reservation</h2>
+          <h3 className='gt3'>Choose a date </h3>
               <div className=" input-field col s4 noFuckingmargin">
-          <select id="show" className="browser-default color_select" value={showId} onChange={changeEvent => setShowId(changeEvent.target.value)}>
+          <select id="show" className="browser-default bg_select " value={showId} onChange={changeEvent => setShowId(changeEvent.target.value)}>
           {shows.map(
               (show, index) => (
                 <option
@@ -90,8 +106,9 @@ function Reservation () {
             )}
           </select>
         </div>
+        <h3 className="title gt2">Take your seat for your family</h3>
             
-           <div className="row">
+           <div className="row family">
                         <div className="input-field col s6">
                         <i className="material-icons prefix">face</i>
                         <input 
@@ -122,7 +139,7 @@ function Reservation () {
             <div className="row">
                         <div className="input-field col s6">
                             <select 
-                                className="browser-default"
+                                className="browser-default bg_select"
                                 value={quantityAdult}
                                 onChange ={e=>setQuantityAdult(e.target.value)}
                             >
@@ -139,7 +156,7 @@ function Reservation () {
                         </div>
                         <div className="input-field col s6">
                             <select 
-                            className="browser-default"
+                            className="browser-default bg_select"
                             value={quantityChildren}
                             onChange={e=>setQuantityChildren(e.target.value)}
                             >
@@ -155,10 +172,12 @@ function Reservation () {
                           
                         </div>
                         <button onClick={sendRegistration}>Save Reservation</button>
+                        <p className="price">total:{priceP}€</p>
 
                  
             </div>
-            <div className="row">
+            <h3 className="title gt2">Take your seat for group</h3>
+            <div className="row ">
                         <div className="input-field col s6">
                             <i className="material-icons prefix">face</i>
                             <input 
@@ -190,7 +209,7 @@ function Reservation () {
             <div className="row">
                         <div className="input-field col s6">
                             <select
-                             className="browser-default"
+                             className="browser-default bg_select"
                              value={numberAdult}
                              onChange ={e=>setNumberAdult(e.target.value)}
                             >
@@ -207,7 +226,7 @@ function Reservation () {
                         </div>
                         <div className="input-field col s6">
                             <select 
-                            className="browser-default"
+                            className="browser-default bg_select"
                             value={numberChildren}
                             onChange={e=>setNumberChildren(e.target.value)}
                             >
@@ -223,6 +242,7 @@ function Reservation () {
                           
                         </div>
                         <button onClick={sendRegistrationCompagny}>Save Reservation</button>
+                        <p className="price">total:{priceC}€</p>
                 
             </div>
 

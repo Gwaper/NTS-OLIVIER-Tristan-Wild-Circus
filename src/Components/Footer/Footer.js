@@ -1,14 +1,16 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 import './Footer.css';
 
 const Footer = () => (
   <footer>
-    <hr />
-    <p>
-      <a href="https://www.wildcodeschool.fr" rel="noopener noreferrer" target="_blank">wild code school</a>
-      <a href="https://www.lacocottesolidaire.fr" rel="noopener noreferrer" target="_blank"> x la cocotte solidaire</a>
-    </p>
+       <ul className="right hide-on-med-and-down  ">
+            <li className="yellow accent-3"><NavLink exact to="/">Accueil</NavLink></li>
+            <li className="yellow accent-3"><NavLink exact to="/reservation">Réservation</NavLink></li>
+            <li className="yellow accent-3"><NavLink exact to="/goldenbook">Goldenbook</NavLink></li>
+            <li className="yellow accent-3"><NavLink exact to="/artistpage">Artist</NavLink></li>
+        </ul>
   </footer>
 );
 

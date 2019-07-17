@@ -1,0 +1,51 @@
+body
+{
+  margin:0 0 0 0;
+  font-family: 'Amatic SC', cursive;
+   background-color:#FFFFCC;
+}
+.bg_select{
+  background-color:#FFFFCC;
+  border:solid;
+  border-color:#498e81;
+   /* border-radius:12px; */
+
+
+}
+.title
+{
+    border:solid;
+    border-radius:12px;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+
+}
+.gt1
+{
+  color:rgb(51,153,255);
+}
+.gt2
+{
+  color:rgb(255,153,0);
+}
+.gt3
+{
+ color:rgb(102,204,51); 
+}
+.gt4
+{
+  color:rgb(255,153,0);
+}
+.price{
+  border:solid;
+  border-radius:12px;
+  width:20%;
+  margin:2%;
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+  color: red;
+  border-color:red;
+  font-size:15px;
+}

@@ -27,7 +27,7 @@ connection.connect((err) => {
   )
   api.get('/goldenbook', (req,res) =>{
     connection.query(
-      'SELECT *  FROM goldenBook',
+      'SELECT *  FROM goldenBook ORDER BY date_comment DESC',
       (err, result) => {
         if (err) throw err;
         res.send(result);
@@ -85,6 +85,28 @@ connection.connect((err) => {
           })
 
   })
+
+  api.delete('/goldenbook/:id_goldenBook', (req,res)=>{
+    if (err) {
+      console.log(err)
+      res.sendStatus(403);
+    } else {
+      const idgoldenBook = req.params.id_goldenBook;
+      console.log(idgoldenBook);
+      
+      connection.query('DELETE FROM activities WHERE id_activity = ?', [idgoldenBook], err => {
+        if (err) {
+          if (err.errno === 1451) {
+            res.status(503).send("Erreur lors de la suppression d'une activité");
+          } else {
+            res.status(500).send("Erreur lors de la suppression d'une activité");
+          }
+        } else {
+          res.sendStatus(200);
+        }
+      });
+    }
+  });
 
 
 

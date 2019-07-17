@@ -3,12 +3,14 @@ import Axios from 'axios'
 import { NavLink } from 'react-router-dom';
 import M from 'materialize-css';
 import moment from 'moment'
+import './GoldenBook.css'
 
 function GoldenBook () {
    const [pseudo, setPseudo]=useState('');
    const [comment, setComment]=useState('');
    const [dateComment, setDateComment]= useState(moment(Date()).calendar());
-    const [goldenMessage, setGoldenMessage]=useState([])
+    const [goldenMessage, setGoldenMessage]=useState([]);
+  
   
 
   
@@ -23,10 +25,11 @@ function GoldenBook () {
         Axios.get('http://localhost:8000/goldenbook')
         .then((result)=>{
             setGoldenMessage(result.data)
+         
         }   
         )
   },[]);
-
+console.log({goldenMessage})
    const sendComment = ()=>{
        Axios.post('http://localhost:8000/goldenbook', newComment)
        .then((res) => {
@@ -40,9 +43,10 @@ function GoldenBook () {
         console.log("try again");
       });
     }
-   console.log({goldenMessage})
+
     return(
         <div className='container'>
+            <h3 className="t1">Give us you opinion</h3>
              <div className="row">
                     <form className="col s6">
                         <div className="input-field col s6">
@@ -85,16 +89,17 @@ function GoldenBook () {
             <div className= 'row'>
             {goldenMessage.map((message, index) => {
          return (
-            <div className="col-s4 col-m4 lg4">
-            <h2 className="header">{moment(message.date_comment).calendar()}</h2>
+            <div className="col-s4 col-m4 lg4 comment">
+            <h2 className="header date_comment">{message.pseudo}</h2>
             <div className="card horizontal">
               </div>
               <div className="card-stacked">
                 <div className="card-content">
-                  <p>real name: {message.pseudo}</p>
+                  <p className="name_comment"> {message.pseudo}</p>
                 </div>
                 <div className="card-content">
-                  <p>comment : {message.comment}</p>
+                  <p className='golden_comment'>{moment(message.date_comment).calendar()}</p>
+                  <button value={message.id_goldenBook} >{message.id_goldenBook}</button>
                 </div>
               </div>
             </div>
