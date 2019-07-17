@@ -39,10 +39,23 @@ CREATE TABLE spectacle(
 
 CREATE TABLE registrations (
   id_registration INT NOT NULL AUTO_INCREMENT,
+  firstname VARCHAR(255),
+  lastname VARCHAR(255),
   quantity_adult INT,
   quantity_children INT,
   show_id INT,
   PRIMARY KEY (id_registration),
+  FOREIGN KEY (show_id) REFERENCES spectacle(id_show)
+);
+
+CREATE TABLE compagny_registration (
+  id_compagny  INT NOT NULL AUTO_INCREMENT,
+  referent VARCHAR(255),
+  compagny_name VARCHAR(255),
+   quantity_adult INT,
+  quantity_children INT,
+    show_id INT,
+    PRIMARY KEY (id_compagny),
   FOREIGN KEY (show_id) REFERENCES spectacle(id_show)
 );
 
